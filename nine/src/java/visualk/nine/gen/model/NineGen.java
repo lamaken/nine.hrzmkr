@@ -9,26 +9,34 @@ package visualk.nine.gen.model;
  *
  * @author alex
  */
-public class NineGen{
+public class NineGen {
 
-    Integer x0=0;
-    String numberBefore="";
-    int k, n=0;
-    String strFunc="";
+    String result;
+    Integer iterations;
 
     public NineGen(String number) {
-
-        n = 0;
-        while (!numberBefore.equals('9') || !numberBefore.equals('0')) {
-            n = n + 1;
-            x0 = Integer.parseInt(number) * 9;
+        result = "";
+        Integer x0 = 0;
+        String numberBefore = "";
+        iterations=0;
+        while (!number.equals("9") && !number.equals("")) {
+           x0 = Integer.parseInt(number) * 9;
             number = String.valueOf(x0);
             numberBefore = number;
-            number = number.substring(0, number.length()-1);
+            number = number.substring(0, number.length() - 1);
             System.out.println(number);
+            Integer diff = (x0/9)-Integer.parseInt(number);
+            result += number.concat("(")+diff+")<br>";
+            iterations++;
         }
-
     }
+
+    @Override
+    public String toString() {
+        return result;
+    }
+    
+    public Integer getIterations(){return iterations;}
 
 }
 

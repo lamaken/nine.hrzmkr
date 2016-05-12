@@ -35,18 +35,20 @@ public class Main extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            NineGen nine = new NineGen(request.getParameter("number"));
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Main</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Main at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Nine magic for " + request.getParameter("number") + "</h1>");
+            out.println("<h3>Iterations:"+nine.getIterations()+"</h3>");
+            out.println(nine.toString());
             out.println("</body>");
             out.println("</html>");
             
-            NineGen nine = new NineGen("718");
-            out.println(nine.toString());
         }
     }
 
