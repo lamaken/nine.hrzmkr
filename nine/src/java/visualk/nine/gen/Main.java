@@ -46,6 +46,7 @@ public class Main extends HttpServlet {
             out.println("</html>");
             
             NineGen nine = new NineGen("718");
+            out.println(nine.toString());
         }
     }
 
