@@ -13,20 +13,24 @@ public class NineGen {
 
     String result;
     Integer iterations;
+    Integer diff=0;
+    Integer oldiff=0;
 
     public NineGen(String number) {
         result = "";
         Integer x0 = 0;
         String numberBefore = "";
-        iterations=0;
+        iterations = 0;
+        
         while (!number.equals("9") && !number.equals("")) {
-           x0 = Integer.parseInt(number) * 9;
+            x0 = Integer.parseInt(number) * 9;
             number = String.valueOf(x0);
             numberBefore = number;
             number = number.substring(0, number.length() - 1);
             System.out.println(number);
-            Integer diff = (x0/9)-Integer.parseInt(number);
-            result += number.concat("(")+diff+")<br>";
+            oldiff = diff;
+            diff = (x0 / 9) - Integer.parseInt(number);
+            result += number.concat("(") + diff + ") "+(oldiff-diff)+"<br>";
             iterations++;
         }
     }
@@ -35,8 +39,10 @@ public class NineGen {
     public String toString() {
         return result;
     }
-    
-    public Integer getIterations(){return iterations;}
+
+    public Integer getIterations() {
+        return iterations;
+    }
 
 }
 
